@@ -3,25 +3,23 @@ import './Products.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Products({ titles, products, cartProducts, setCartProducts, addAlert }) {
+    
     const addProduct = id => {
-        if (cartProducts.length && cartProducts.find(product => product.id === id)){
-            addAlert({ type: 'Error', message: 'The product is already in your cart.' });
-            return;
-        }
+        if (cartProducts.length && cartProducts.find(product => product.id === id)) 
+            return addAlert({ type: 'Error', message: 'The product is already in your cart.' });
+        
         let product = products.find(product => product.id === id);
         setCartProducts([...cartProducts, product]);
         addAlert({ class: 'alert-success',type: 'Success', message: 'The product have been added to your cart.' });
     };
 
     const removeProduct = id => {
-        if (!cartProducts.length){
-            addAlert({ type: 'Error', message: 'The cart is empty.' });
-            return;
-        }
-        if (!cartProducts.find(product => product.id === id)){
-            addAlert({ type: 'Error', message: "The product isn't in your cart." });
-            return;
-        }
+        if (!cartProducts.length)
+            return addAlert({ type: 'Error', message: 'The cart is empty.' });
+
+        if (!cartProducts.find(product => product.id === id))
+            return addAlert({ type: 'Error', message: "The product isn't in your cart." });
+
         setCartProducts(cartProducts.filter(product => product.id !== id));
         addAlert({ class: 'alert-success',type: 'Success', message: 'The product have been removed from your cart.' });
     };
@@ -32,14 +30,20 @@ function Products({ titles, products, cartProducts, setCartProducts, addAlert })
             <td>{product.name}</td>
             <td>{product.currency + product.price}</td>
             <td>
-                <div className="btn-group" role="group">
+                { cartProducts.find(cartProduct => cartProduct.id === product.id)? 
+                    <div className="btn-group" role="group">
+                        <button type="button" className="btn btn-success">
+                            <FontAwesomeIcon icon="check" />
+                        </button>
+                        <button type="button" className="btn btn-danger" onClick={() => removeProduct(product.id)}>
+                            <FontAwesomeIcon icon="trash-alt" />
+                        </button>
+                    </div>
+                :
                     <button type="button" className="btn btn-primary" onClick={() => addProduct(product.id)}>
                         <FontAwesomeIcon icon="cart-plus" />
                     </button>
-                    <button type="button" className="btn btn-danger" onClick={() => removeProduct(product.id)}>
-                        <FontAwesomeIcon icon="trash-alt" />
-                    </button>
-                </div>
+                }
             </td>
         </tr>
     ));

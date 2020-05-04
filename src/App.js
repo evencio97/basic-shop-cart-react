@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faCartPlus, faTrashAlt, faShoppingCart, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faTrashAlt, faShoppingCart, faTimesCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
 //Components
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
@@ -10,7 +10,7 @@ import Products from './components/products/Products';
 import Alerts from './components/alerts/Alerts';
 
 //FontAwesome library
-library.add(fab, faCartPlus, faTrashAlt, faShoppingCart, faTimesCircle);
+library.add(fab, faCartPlus, faTrashAlt, faShoppingCart, faTimesCircle, faCheck);
 window.sessionStorage.setItem("numAlerts", 0);
 
 function App() {
