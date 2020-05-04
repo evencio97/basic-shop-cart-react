@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#content {
+  /* padding: 1em 0 1em 0; */
+  min-height: calc(100vh - 80px);
+}
+
+.section{
+  margin: 1.5em 0 1.5em 0;
+}
+
+.section-title{
+  margin-bottom: 0.5em;
+}
+
+thead th{
+  text-align: center !important;
+}
