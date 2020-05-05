@@ -14,11 +14,11 @@ code {
 
 #content {
   /* padding: 1em 0 1em 0; */
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 140px);
 }
 
 .section{
-  margin: 1.5em 0 1.5em 0;
+  padding: 1.5em 0 1.5em 0;
 }
 
 .section-title{
